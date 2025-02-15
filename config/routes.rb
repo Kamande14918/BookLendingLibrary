@@ -1,5 +1,5 @@
 Rails.application.routes.draw do 
-  resources : books do
+  resources :books do
     member do
       get 'borrow'
       get 'return'

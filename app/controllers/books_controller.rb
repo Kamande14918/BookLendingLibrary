@@ -32,25 +32,26 @@ class BooksController < ApplicationController
     else
       render :edit
     end
-
-    def destroy
-      @book = Book.find(params[:id])
-      @book.destroy
-      redirect_to books_path
-    end
-
-    def borrowed_on
-      @book = Book.find(params[:id])
-    end
-
-    def return
-      @book = Book.find(params[:id])
-    end
-
-    private
-
-    def book_params
-      params.require(:book).permit(:title, :author, :description)
-    end
   end
-  
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
+  end
+
+  def borrowed_on
+    @book = Book.find(params[:id])
+  end
+
+  def return
+    @book = Book.find(params[:id])
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :author, :description)
+  end
+end
+
