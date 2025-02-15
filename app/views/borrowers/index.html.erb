@@ -1,0 +1,9 @@
+# filepath: /C:/Users/user/BookLendingLibrary/app/views/borrowers/index.html.erb
+<h1>Borrowers</h1>
+<ul>
+  <% @borrowers.each do |borrower| %>
+    <li>
+      <%= link_to borrower.name, borrower_path(borrower) %>
+    </li>
+  <% end %>
+</ul>

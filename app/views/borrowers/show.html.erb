@@ -1,11 +1,14 @@
-<h1><%= @borrower.name %>'s Borrowing History</h1>
+<h1>Borrower: <%= @borrower.name %></h1>
+
+<h2>Borrowing History</h2>
 <ul>
-  <% @lendings.each do |lending| %>
+  <% @borrower.lendings.each do |lending| %>
     <li>
-      Borrowed <%= lending.book.title %> on <%= lending.borrowed_on %>
-      <% if lending.returned_on %>
-        , returned on <%= lending.returned_on %>
-      <% end %>
+      <strong>Book:</strong> <%= link_to lending.book.title, book_path(lending.book) %> |
+      <strong>Borrowed On:</strong> <%= lending.borrowed_on %> |
+      <strong>Returned On:</strong> <%= lending.returned_on %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to 'Back', books_path %>
