@@ -1,2 +1,11 @@
-<h1>Borrowers#show</h1>
-<p>Find me in app/views/borrowers/show.html.erb</p>
+<h1><%= @borrower.name %>'s Borrowing History</h1>
+<ul>
+  <% @lendings.each do |lending| %>
+    <li>
+      Borrowed <%= lending.book.title %> on <%= lending.borrowed_on %>
+      <% if lending.returned_on %>
+        , returned on <%= lending.returned_on %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
