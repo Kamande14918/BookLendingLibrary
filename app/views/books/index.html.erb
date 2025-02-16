@@ -6,8 +6,12 @@
       <%= link_to book.title, book_path(book) %>
       <%= link_to 'Edit', edit_book_path(book) %> |
       <%= link_to 'Delete', book_path(book), method: :delete, data: { confirm: 'Are you sure?' } %> |
-      <%= link_to 'Borrow', borrow_book_path(book) %> |
-      <%= link_to 'Return', return_book_path(book) %>
+      <% lending = book.lendings.find_by(returned_on: nil) %>
+      <% if lending %>
+        <%= link_to 'Return Book', return_book_lending_path(book, lending), method: :patch, data: { confirm: 'Are you sure you want to return this book?' } %>
+      <% else %>
+        <%= link_to 'Borrow', new_book_lending_path(book) %>
+      <% end %>
     </li>
   <% end %>
 </ul>

@@ -9,6 +9,9 @@
       <strong>Borrower:</strong> <%= lending.borrower.name %> |
       <strong>Borrowed On:</strong> <%= lending.borrowed_on %> |
       <strong>Returned On:</strong> <%= lending.returned_on %>
+      <% if lending.returned_on.nil? %>
+        | <%= link_to 'Return', return_book_lending_path(@book, lending), method: :patch, data: { confirm: 'Are you sure you want to return this book?' } %>
+      <% end %>
     </li>
   <% end %>
 </ul>

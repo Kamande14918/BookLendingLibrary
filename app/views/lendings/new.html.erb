@@ -1,0 +1,14 @@
+<h1>Borrow Book: <%= @book.title %></h1>
+
+<%= form_with model: [@book, @lending], url: book_lendings_path(@book), method: :post, local: true do |form| %>
+  <div class="field">
+    <%= form.label :borrower_name, "Borrower's Name" %>
+    <%= form.text_field :borrower_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Borrow" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', book_path(@book) %>
